@@ -1,18 +1,16 @@
 import React from 'react';
 import './App.css';
+import { Redirect } from 'react-router-dom'
 
 class App extends React.Component {
-  state = {
-    toDashboard: localStorage.getItem('logged'),
-  }
   render() {
-    if (!this.state.toDashboard || this.state.toDashboard === false) {
-      return <h1>Login {this.state.toDashboard}</h1>
+    if(localStorage.getItem('token') === null) {
+      return (<Redirect to='/dashboard' />)
     }
 
     return (
         <>
-          <h1>Hello</h1>
+          <h1>Login</h1>
         </>
     )
   }

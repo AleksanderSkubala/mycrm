@@ -9,8 +9,7 @@ import App from './components/App';
 
 ReactDOM.render((
     <Router>
-        <div className="container">
             <Route path="/" component={App} />
-        </div>
+            <Route path="/dashboard" component={App} />
     </Router>
 ), document.getElementById('root'));
