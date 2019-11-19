@@ -5,11 +5,11 @@ import {
     Route
 } from 'react-router-dom';
 
-import App from './components/App';
+import Main from './components/Main';
 
 ReactDOM.render((
     <Router>
-            <Route path="/" component={App} />
-            <Route path="/dashboard" component={App} />
+            <Route path="/" component={Main} />
+            <Route path="/dashboard" component={Main} />
     </Router>
 ), document.getElementById('root'));

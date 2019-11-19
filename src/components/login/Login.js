@@ -1,6 +1,9 @@
 import React from 'react';
 import './Login.css';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
+
+localStorage.removeItem('token');
 
 class Login extends React.Component {
     constructor(props) {
@@ -17,12 +20,13 @@ class Login extends React.Component {
             name: this.refs.name.value,
             password: this.refs.password.value
         });
-        axios.post( `https://mycrm-api.herokuapp.com/login?name=${this.state.name}&password=${this.state.password}`)
-            .then(function (res) {
+        axios.post( `https://mycrm-api.herokuapp.com/login?name=${this.refs.name.value}&password=${this.refs.password.value}`)
+            .then(res => {
                 localStorage.setItem('token', res.data.token);
+                this.setState({logged: true});
             })
-            .catch(function (err) {
-                console.log(err);
+            .catch((err) => {
+                this.setState({error: err.response.data.info.message});
             })
     }
 
@@ -41,7 +45,12 @@ class Login extends React.Component {
                     </label>
                     <button onClick={this.handleSubmit}>LOGIN!</button>
                 </div>
-                <p>{this.state.errors}</p>
+                {this.state.error &&
+                    <p>{this.state.error}</p>
+                }
+                {this.state.logged === true &&
+                    <Redirect to='/dashboard'/>
+                }
             </>
         )
     }

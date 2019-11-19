@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
+import './Main.css';
 import { Redirect } from 'react-router-dom'
 import Login from './login/Login';
 
-class App extends React.Component {
+class Main extends React.Component {
 
   render() {
     if(localStorage.getItem('token') !== null) {
@@ -14,4 +14,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Main;
