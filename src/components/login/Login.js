@@ -32,18 +32,24 @@ class Login extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="container">
                 <h1>Login</h1>
-                <div ref={this.listRef}>
-                    <label>
-                        Name:
-                        <input type="text" name="name" ref="name"/>
-                    </label>
-                    <label>
-                        Password:
-                        <input type="password" name="password" ref="password"/>
-                    </label>
-                    <button onClick={this.handleSubmit}>LOGIN!</button>
+                <div className="form" ref={this.listRef}>
+                    <input
+                        type="text"
+                        name="name"
+                        ref="name"
+                        placeholder="Name"
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        ref="password"
+                        placeholder="Password"
+                    />
+                    <button onClick={this.handleSubmit}>
+                        <span>LOGIN!</span>
+                    </button>
                 </div>
                 {this.state.error &&
                     <p>{this.state.error}</p>
@@ -51,7 +57,7 @@ class Login extends React.Component {
                 {this.state.logged === true &&
                     <Redirect to='/dashboard'/>
                 }
-            </>
+            </div>
         )
     }
 }
