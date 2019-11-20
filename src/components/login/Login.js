@@ -52,7 +52,7 @@ class Login extends React.Component {
                     </button>
                 </div>
                 {this.state.error &&
-                    <p>{this.state.error}</p>
+                    <p className="errors">{this.state.error}</p>
                 }
                 {this.state.logged === true &&
                     <Redirect to='/dashboard'/>
