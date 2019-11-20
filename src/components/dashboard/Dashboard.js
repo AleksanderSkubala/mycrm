@@ -21,17 +21,14 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount = async () => {
-        //  await axios.get(
-        //     'https://mycrm-api.herokuapp.com/processes'
-        // ).then(res => {
-        //     this.setState({data: res.data});
-        //     console.log(this.state);
-        //  }).catch((error) => {
-        //     console.log(error.response);
-        // });
-         let res = await axios.get('https://mycrm-api.herokuapp.com/processes');
-         let { data } = res.data;
-         this.setState({data: data});
+        await axios.get(
+            'https://mycrm-api.herokuapp.com/processes'
+        ).then(res => {
+            this.setState({data: res.data});
+            console.log(this.state.data);
+         }).catch((error) => {
+            console.log(error.response);
+        });
     };
 
     processList() {
@@ -42,9 +39,9 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <>{this.state &&
-            <ul>{this.processList()}</ul>
-            }</>
+            <div className="container">{this.state &&
+                <ul>{this.processList()}</ul>
+            }</div>
         )
     }
 }
