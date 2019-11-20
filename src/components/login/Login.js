@@ -3,8 +3,6 @@ import './Login.css';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
-localStorage.removeItem('token');
-
 class Login extends React.Component {
     constructor(props) {
         super(props);
