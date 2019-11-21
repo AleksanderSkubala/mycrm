@@ -25,3 +25,22 @@
     width: 85vw;
     padding-top: calc(2 * 25px + 48px);
 }
+
+.dashboard__section ul {
+    list-style-type: none;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+}
+
+.dashboard__section ul > li {
+    width: 100%;
+    height: 270px; /*250-350*/
+    background-color: #3a3e46;
+    border: .5px solid #ff4e50;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+}

@@ -23,7 +23,9 @@ class Dashboard extends React.Component {
 
     processList() {
         return this.state.data.map(process => (
-            <li key={process.id}>{process.name}</li>
+            <li key={process.id}>
+                <h3>{process.name}</h3>
+            </li>
         ))
     }
 
