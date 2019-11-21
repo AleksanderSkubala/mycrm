@@ -5,7 +5,7 @@ body, html {
     align-items: center;
 }
 
-.container {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,27 +15,27 @@ body, html {
     box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
 }
 
-h1 {
+.login h1 {
     font-size: 46px;
 }
 
-.errors {
+.login .login__errors {
     text-align: center;
     width: 100%;
 }
 
-.form {
+.login .login__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.form * {
+.login .login__form * {
     margin: 12px 0;
 }
 
-.form input {
+.login__form input {
     box-sizing: content-box;
     border: none;
     height: 15px;
@@ -45,7 +45,7 @@ h1 {
     padding: 8px;
 }
 
-.form button {
+.login__form button {
     position: relative;
     cursor: pointer;
     font-family: 'Poppins';
@@ -57,18 +57,18 @@ h1 {
     background: none;
 }
 
-button span {
+.login__form button span {
     position: relative;
     z-index: 2;
     transition: color .2s .1s ease-in;
     will-change: color;
 }
 
-button:hover span {
+.login__form button:hover span {
     color: white;
 }
 
-button::before{
+.login__form button::before{
     content: '';
     position: absolute;
     top: 0;
@@ -80,16 +80,16 @@ button::before{
     transition: transform .2s ease-in;
 }
 
-button:hover::before{
+.login__form button:hover::before{
     transform: scaleX(1);
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-    .container {
+    .login {
         width: 100vw;
         height: 100vh;
     }
-    .errors {
+    .login__errors {
         width: 100vw;
     }
 }

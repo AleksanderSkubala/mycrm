@@ -29,9 +29,9 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="login">
                 <h1>Login</h1>
-                <div className="form" ref={this.listRef}>
+                <div className="login__form" ref={this.listRef}>
                     <input
                         type="text"
                         name="name"
@@ -49,7 +49,7 @@ class Login extends React.Component {
                     </button>
                 </div>
                 {this.state.error &&
-                    <p className="errors">{this.state.error}</p>
+                    <p className="login__errors">{this.state.error}</p>
                 }
             </div>
         )

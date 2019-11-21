@@ -1,1 +1,27 @@
+.dashboard {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    position:relative
+}
 
+.dashboard .dashboard__header {
+    position: absolute;
+    background-color: #ff4e50;
+    width: 100vw;
+    padding: 25px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .dashboard__nav {
+    width: 18vw;
+    height: 100vh;
+    background-color: #3a3e46;
+}
+
+.dashboard .dashboard__section {
+    width: 85vw;
+    padding-top: calc(2 * 25px + 48px);
+}

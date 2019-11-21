@@ -5,6 +5,7 @@ import axios from 'axios';
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {};
 
         this.processList = this.processList.bind(this);
     }
@@ -15,9 +16,8 @@ class Dashboard extends React.Component {
             'https://mycrm-api.herokuapp.com/processes'
         ).then(res => {
             this.setState({data: res.data});
-            console.log(this.state.data);
          }).catch((error) => {
-            console.log(error.response);
+            this.setState({error: error.response});
         });
     };
 
@@ -29,9 +29,20 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div className="container">{this.state &&
-                <ul>{this.processList()}</ul>
-            }</div>
+            <div className="dashboard">
+                <header className="dashboard__header">
+                    <h1>MyCRM</h1>
+                </header>
+                <nav className="dashboard__nav"></nav>
+                <section className="dashboard__section">
+                    {this.state.data &&
+                        <ul>{this.processList()}</ul>
+                    }
+                    {this.state.error &&
+                        <p>{this.state.error}</p>
+                    }
+                </section>
+            </div>
         )
     }
 }
