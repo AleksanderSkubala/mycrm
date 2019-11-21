@@ -1,6 +1,5 @@
 import React from 'react';
 import './Login.css';
-import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 class Login extends React.Component {
@@ -21,11 +20,11 @@ class Login extends React.Component {
         axios.post( `https://mycrm-api.herokuapp.com/login?name=${this.refs.name.value}&password=${this.refs.password.value}`)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
-                this.setState({logged: true});
+                this.props.callback(res.data.token);
             })
             .catch((err) => {
                 this.setState({error: err.response.data.info.message});
-            })
+            });
     }
 
     render() {
@@ -51,9 +50,6 @@ class Login extends React.Component {
                 </div>
                 {this.state.error &&
                     <p className="errors">{this.state.error}</p>
-                }
-                {this.state.logged === true &&
-                    <Redirect to='/dashboard'/>
                 }
             </div>
         )

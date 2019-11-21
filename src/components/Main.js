@@ -1,16 +1,27 @@
 import React from 'react';
 import './Main.css';
-import { Redirect } from 'react-router-dom'
 import Login from './login/Login';
+import Dashboard from './dashboard/Dashboard';
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: localStorage.getItem('token')
+    }
+    this.changeToken = this.changeToken.bind(this);
+  }
+
+  changeToken = (data) => {
+    this.setState({token: data});
+  };
 
   render() {
-    if(localStorage.getItem('token') !== null) {
-      return <Redirect to='/dashboard' />
+    if(this.state.token !== null) {
+      return <Dashboard />
     }
 
-    return <Login/>
+    return <Login callback={this.changeToken}/>
   }
 }
 

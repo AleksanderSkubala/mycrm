@@ -1,17 +1,6 @@
 import React from 'react';
 import './Dashboard.css';
 import axios from 'axios';
-axios.defaults.headers.common = {'Authorization': `bearer ${localStorage.getItem('token')}`};
-
-function ProcessList(data) {
-    return (
-      <>{this.state.data &&
-          <ul>{this.state.data.map(process => {
-            return <li key={process.id}>{process.name}</li>
-          })}</ul>
-      }</>
-    );
-}
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -21,6 +10,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount = async () => {
+        axios.defaults.headers.common = {'Authorization': `bearer ${localStorage.getItem('token')}`};
         await axios.get(
             'https://mycrm-api.herokuapp.com/processes'
         ).then(res => {
