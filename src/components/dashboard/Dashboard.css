@@ -9,35 +9,36 @@
     position: absolute;
     background-color: #ff4e50;
     width: 100vw;
-    padding: 25px 15px;
+    padding: 15px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .dashboard .dashboard__nav {
-    width: 18vw;
+    width: 20vw;
     height: 100vh;
     background-color: #3a3e46;
+    padding-top: calc(2 * 15px + 48px);
 }
 
 .dashboard .dashboard__section {
     width: 85vw;
-    padding-top: calc(2 * 25px + 48px);
+    padding-top: calc(2 * 15px + 48px);
 }
 
 .dashboard__section ul {
     list-style-type: none;
     padding: 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     grid-column-gap: 40px;
     grid-row-gap: 40px;
 }
 
 .dashboard__section ul > li {
     width: 100%;
-    height: 270px; /*250-350*/
+    height: 250px; /*250-350*/
     background-color: #3a3e46;
     border: .5px solid #ff4e50;
     display: flex;

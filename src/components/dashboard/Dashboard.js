@@ -1,6 +1,12 @@
 import React from 'react';
 import './Dashboard.css';
 import axios from 'axios';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -16,6 +22,7 @@ class Dashboard extends React.Component {
             'https://mycrm-api.herokuapp.com/processes'
         ).then(res => {
             this.setState({data: res.data});
+            console.log(res.data);
          }).catch((error) => {
             this.setState({error: error.response});
         });
@@ -25,6 +32,7 @@ class Dashboard extends React.Component {
         return this.state.data.map(process => (
             <li key={process.id}>
                 <h3>{process.name}</h3>
+                <p>{}</p>
             </li>
         ))
     }
@@ -35,7 +43,9 @@ class Dashboard extends React.Component {
                 <header className="dashboard__header">
                     <h1>MyCRM</h1>
                 </header>
-                <nav className="dashboard__nav"></nav>
+                <nav className="dashboard__nav">
+                    <Link to="/clients">Clients</Link>
+                </nav>
                 <section className="dashboard__section">
                     {this.state.data &&
                         <ul>{this.processList()}</ul>

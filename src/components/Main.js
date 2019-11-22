@@ -17,11 +17,10 @@ class Main extends React.Component {
   };
 
   render() {
-    if(this.state.token !== null) {
+    if(this.state.token !== null)
       return <Dashboard />
-    }
-
-    return <Login callback={this.changeToken}/>
+    else
+      return <Login callback={this.changeToken}/>
   }
 }
 
