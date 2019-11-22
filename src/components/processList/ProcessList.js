@@ -7,6 +7,7 @@ class ProcessList extends React.Component {
         this.state = {};
 
         this.processList = this.processList.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount = async () => {
@@ -21,9 +22,13 @@ class ProcessList extends React.Component {
         });
     };
 
+    handleClick = (process) => {
+        this.props.changeState({processId: process.id});
+    };
+
     processList() {
         return this.state.data.map(process => (
-            <li key={process.id}>
+            <li key={process.id} onClick={() => this.handleClick(process)}>
                 <h3>{process.name}</h3>
                 <p>{}</p>
             </li>

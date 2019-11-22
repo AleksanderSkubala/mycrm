@@ -12,6 +12,12 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+        this.changeState = this.changeState.bind(this);
+    }
+
+    changeState(state) {
+        this.setState(state);
     }
 
     render() {
@@ -30,7 +36,7 @@ class Dashboard extends React.Component {
                             <h1>Users</h1>
                         </Route>
                         <Route path="/">
-                            <ProcessList />
+                            <ProcessList changeState={this.changeState}/>
                         </Route>
                     </Switch>
                 </section>
