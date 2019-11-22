@@ -1,44 +1,22 @@
 import React from 'react';
 import './Dashboard.css';
-import axios from 'axios';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
+import ProcessList from "../processList/ProcessList";
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-
-        this.processList = this.processList.bind(this);
-    }
-
-    componentDidMount = async () => {
-        axios.defaults.headers.common = {'Authorization': `bearer ${localStorage.getItem('token')}`};
-        await axios.get(
-            'https://mycrm-api.herokuapp.com/processes'
-        ).then(res => {
-            this.setState({data: res.data});
-            console.log(res.data);
-         }).catch((error) => {
-            this.setState({error: error.response});
-        });
-    };
-
-    processList() {
-        return this.state.data.map(process => (
-            <li key={process.id}>
-                <h3>{process.name}</h3>
-                <p>{}</p>
-            </li>
-        ))
     }
 
     render() {
         return (
+        <Router>
             <div className="dashboard">
                 <header className="dashboard__header">
                     <h1>MyCRM</h1>
@@ -47,14 +25,17 @@ class Dashboard extends React.Component {
                     <Link to="/clients">Clients</Link>
                 </nav>
                 <section className="dashboard__section">
-                    {this.state.data &&
-                        <ul>{this.processList()}</ul>
-                    }
-                    {this.state.error &&
-                        <p>{this.state.error}</p>
-                    }
+                    <Switch>
+                        <Route path="/clients">
+                            <h1>Users</h1>
+                        </Route>
+                        <Route path="/">
+                            <ProcessList />
+                        </Route>
+                    </Switch>
                 </section>
             </div>
+        </Router>
         )
     }
 }
