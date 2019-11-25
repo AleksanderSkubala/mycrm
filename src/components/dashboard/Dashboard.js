@@ -6,7 +6,9 @@ import {
     Route,
     Link
 } from "react-router-dom";
+
 import ProcessList from "../processList/ProcessList";
+import Process from "../process/Process";
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -33,7 +35,7 @@ class Dashboard extends React.Component {
                 <section className="dashboard__section">
                     <Switch>
                         <Route path="/process">
-                            <h1>Process</h1>
+                            <Process />
                         </Route>
                         <Route path="/">
                             <ProcessList changeState={this.changeState}/>
