@@ -26,10 +26,7 @@ class ProcessList extends React.Component {
     processList() {
         return this.state.data.map(process => (
             <li key={process.id}>
-                <Link to={{
-                    pathname: '/process',
-                    search: `?id=${process.id}`
-                }}>
+                <Link to={`/process/${process.id}`}>
                     <h3>{process.name}</h3>
                     <p>{process.description}</p>
                 </Link>

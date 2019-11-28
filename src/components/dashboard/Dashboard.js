@@ -34,9 +34,7 @@ class Dashboard extends React.Component {
                 </nav>
                 <section className="dashboard__section">
                     <Switch>
-                        <Route path="/process">
-                            <Process />
-                        </Route>
+                        <Route path="/process/:id" component={Process} />
                         <Route path="/">
                             <ProcessList changeState={this.changeState}/>
                         </Route>

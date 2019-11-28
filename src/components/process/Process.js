@@ -1,27 +1,32 @@
 import React from 'react';
 import './Process.css';
-import { useParams } from 'react-router-dom';
-
-function Child() {
-    let { id } = useParams();
-    console.log(id);
-    return (
-        <h1>{id}</h1>
-    )
-}
+import axios from 'axios';
 
 class Process extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            id: '1'
-        }
+    }
+
+    componentDidMount = async () => {
+        const { match: { params } } = this.props;
+        console.log(params.id);
+        await axios.get(`https://mycrm-api.herokuapp.com/transactions?process=${params.id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        })
+            .then(res => {
+                this.setState({data: res.data})
+            })
+            .catch(err => this.setState({error: err.response}))
     }
 
     render() {
         return (
             <>
-                {<Child />}
+                {this.state.data.map(process => (
+                    <h1>{process}</h1>
+                ))}
             </>
         );
     }
